@@ -1,0 +1,240 @@
+.login {
+  height: 98vmin;
+}
+
+.login-card {
+  margin: 2vmin;
+  padding: 3vmin;
+  border-radius: 2vmin;
+  background-color: #F5F5F5;
+  -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+}
+
+.login-head {
+  text-align: center;
+  margin: 2vmin 0;
+  font-size: 4vmin;
+}
+
+div.alert {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 1rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+div.alert.success {
+  color: #155724;
+  background-color: #D4EDDA;
+  border-color: #C3E6CB;
+}
+
+div.alert.warning {
+  color: #856404;
+  background-color: #FFF3CD;
+  border-color: #FFEEBA;
+}
+
+div.alert.error {
+  color: #721C24;
+  background-color: #F8D7DA;
+  border-color: #F5C6CB;
+}
+
+div.alert.info {
+  color: #0C5460;
+  background-color: #D1ECF1;
+  border-color: #BEE5EB;
+}
+
+/* This form template is based-of Bootstrap but made simpler and smarter! It can be used to make fully modular forms without the need of columns and rows. If you want to use another front-end library you should delete this file. */
+@media (min-width: 576px) {
+  form {
+    padding: 0.5rem;
+  }
+
+  form > div.form-row {
+    display: flex !important;
+  }
+}
+
+form > div.form-row > div.form-group {
+  flex: 1;
+  padding: 0 5px 0 5px;
+  margin-bottom: 1rem;
+}
+
+form > div.form-row > div.form-group > label {
+  display: inline-block;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+form > div.form-row > div.form-group > span.required {
+  color: red;
+  display: inline-block;
+  padding-left: 0.2rem;
+}
+
+form > div.form-row > div.form-group > div.input-group, form > div.form-row > div.form-group div.area-group {
+  display: flex;
+  width: 100%;
+}
+
+form > div.form-row > div.form-group > div.input-group > *, form > div.form-row > div.form-group div.area-group > * {
+  display: flex;
+  font-size: 0.9rem;
+  font-family: inherit;
+  border: 1px solid #CED4DA;
+}
+
+form > div.form-row > div.form-group > div.input-group > input, form > div.form-row > div.form-group div.area-group > input, form > div.form-row > div.form-group > div.input-group textarea, form > div.form-row > div.form-group div.area-group textarea {
+  width: 100%;
+  position: relative;
+  min-height: 1.5rem;
+  padding: 0.4rem 0.7rem;
+  background-color: #FFFFFF;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.slider, form > div.form-row > div.form-group div.area-group > input.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0.75rem 0 0.75rem 0;
+  background-color: #D3D3D3;
+  border-radius: 0.5rem;
+  min-height: 0;
+  outline: none;
+  height: 0.6rem;
+  opacity: 0.75;
+  padding: 0;
+  border: 0;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.slider::-webkit-slider-thumb, form > div.form-row > div.form-group div.area-group > input.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: #6C757D;
+  cursor: pointer;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.slider::-webkit-slider-thumb:hover, form > div.form-row > div.form-group div.area-group > input.slider::-webkit-slider-thumb:hover, form > div.form-row > div.form-group > div.input-group > input.slider::-webkit-slider-thumb:focus, form > div.form-row > div.form-group div.area-group > input.slider::-webkit-slider-thumb:focus {
+  background-color: #5A6268;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.slider::-webkit-slider-thumb:active, form > div.form-row > div.form-group div.area-group > input.slider::-webkit-slider-thumb:active {
+  background-color: #5A6268;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.br-both, form > div.form-row > div.form-group div.area-group > input.br-both, form > div.form-row > div.form-group > div.input-group textarea.br-both, form > div.form-row > div.form-group div.area-group textarea.br-both {
+  border-radius: 0.25rem;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.br-right, form > div.form-row > div.form-group div.area-group > input.br-right, form > div.form-row > div.form-group > div.input-group textarea.br-right, form > div.form-row > div.form-group div.area-group textarea.br-right {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+form > div.form-row > div.form-group > div.input-group > input.br-left, form > div.form-row > div.form-group div.area-group > input.br-left, form > div.form-row > div.form-group > div.input-group textarea.br-left, form > div.form-row > div.form-group div.area-group textarea.br-left {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+form > div.form-row > div.form-group > div.input-group > div.input-prepend, form > div.form-row > div.form-group div.area-group > div.input-prepend, form > div.form-row > div.form-group > div.input-group div.input-append, form > div.form-row > div.form-group div.area-group div.input-append {
+  flex-shrink: 0;
+  font-size: 1rem;
+  align-items: center;
+  padding: 0.4rem 0.7rem;
+  background-color: #E9ECEF;
+  justify-content: center;
+}
+
+form > div.form-row > div.form-group > div.input-group > div.input-prepend > svg, form > div.form-row > div.form-group div.area-group > div.input-prepend > svg, form > div.form-row > div.form-group > div.input-group div.input-append > svg, form > div.form-row > div.form-group div.area-group div.input-append > svg {
+  width: 1.25rem;
+}
+
+form > div.form-row > div.form-group > div.input-group > div.input-prepend > .toggle-password, form > div.form-row > div.form-group div.area-group > div.input-prepend > .toggle-password, form > div.form-row > div.form-group > div.input-group div.input-append > .toggle-password, form > div.form-row > div.form-group div.area-group div.input-append > .toggle-password {
+  cursor: pointer;
+}
+
+form > div.form-row > div.form-group > div.input-group > div.input-prepend, form > div.form-row > div.form-group div.area-group > div.input-prepend {
+  margin-right: -1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+form > div.form-row > div.form-group > div.input-group > div.input-append, form > div.form-row > div.form-group div.area-group > div.input-append {
+  margin-left: -1px;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+form > div.form-row > div.form-group > span.input-text {
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+form > div.form-row > div.form-group > div.slider-text {
+  display: flex;
+  margin-top: 0.2rem;
+}
+
+form > div.form-row > div.form-group > div.slider-text > * {
+  flex-grow: 1;
+  font-size: 0.8rem;
+}
+
+form > div.form-row > div.form-group > div.slider-text > div.slider-left {
+  text-align: left;
+}
+
+form > div.form-row > div.form-group > div.slider-text > div.slider-value {
+  text-align: center;
+}
+
+form > div.form-row > div.form-group > div.slider-text > div.slider-right {
+  text-align: right;
+}
+
+form > div.btn-row {
+  text-align: center;
+}
+
+form > div.btn-row > button {
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #5E90FF;
+  padding: 0.5rem 15%;
+  font-family: inherit;
+  border-radius: 0.25rem;
+  outline: none;
+  border: none;
+}
+
+form > div.btn-row > button:hover {
+  -webkit-box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
+  -moz-box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
+  box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
+}
+
+@media (max-width: 575.98px) {
+  form {
+    width: 80vw;
+  }
+}
+
+@media (min-width: 576px) {
+  form {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 992px) {
+  form.login-form {
+    width: 25vw;
+  }
+}

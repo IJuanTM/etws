@@ -1,0 +1,82 @@
+.navbar {
+  height: 8vmin;
+  background-color: #F5F5F5;
+  -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, .5);
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .5);
+}
+
+.nav-row {
+  display: flex;
+  height: 100%;
+}
+
+.nav-col {
+  display: flex;
+  flex: 1;
+}
+
+.nav-left {
+  padding-left: 1vmin;
+}
+
+.nav-right {
+  flex-grow: 0;
+  padding-right: 1vmin;
+}
+
+.nav-logo > svg {
+  height: 100%;
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+}
+
+.nav-logo > svg:hover {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.nav-item {
+  flex: 1;
+  margin: 1vmin;
+  padding: 0 2vmin;
+  border-radius: 1vmin;
+  font-size: 2.6vmin;
+  font-weight: bold;
+}
+
+.nav-item > svg {
+  padding-right: 1vmin;
+  font-size: 3.4vmin;
+}
+
+.nav-link:hover {
+  background-color: #F0F0F0;
+}
+
+.nav-help {
+  background-color: #5E90FF;
+}
+
+.nav-help > svg {
+  color: #FFFFFF;
+  padding: 0;
+  font-size: 3vmin;
+}
+
+.nav-logout {
+  padding: 0 4vmin;
+  background-color: #D31B1B;
+}
+
+.nav-logout > svg {
+  color: #FFFFFF;
+  padding: 0;
+  font-size: 3.4vmin;
+}
+
+.nav-button:hover {
+  -webkit-box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
+  -moz-box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
+  box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
+}

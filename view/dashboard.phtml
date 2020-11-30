@@ -1,0 +1,89 @@
+<div class="dashboard">
+    <div class="dash-row">
+        <div class="dash-col">
+            <div class="dash-row dash-day">
+                <div class="dash-col">
+                    <div class="dash-card">
+                        <h1 class="card-head">Vandaag:</h1>
+                        <div class="card-table">
+                            <div class="table-row">
+                                <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(date("N"))) ?></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dash-row">
+                <div class="dash-col">
+                    <div class="dash-card">
+                        <h1 class="card-head">Deze maand:</h1>
+                    </div>
+                </div>
+                <div class="dash-col">
+                    <div class="dash-card">
+                        <h1 class="card-head">Totaal:</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dash-col">
+            <div class="dash-card">
+                <h1 class="card-head">Deze Week:</h1>
+                <div class="card-table table-week">
+                    <div class="table-row table-head">
+                        <div class="table-col">Dag:</div>
+                        <div class="table-col">Bespaard (kWh):</div>
+                        <div class="table-col">Bespaard (€):</div>
+                    </div>
+                    <div class="table-row striped" id="mon">
+                        <div class="table-col">Maandag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(1)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <div class="table-row" id="tue">
+                        <div class="table-col">Dinsdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(2)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <div class="table-row striped" id="wed">
+                        <div class="table-col">Woensdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(3)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <div class="table-row" id="thu">
+                        <div class="table-col">Donderdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(4)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <div class="table-row striped" id="fri">
+                        <div class="table-col">Vrijdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(5)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <div class="table-row" id="sat">
+                        <div class="table-col">Zaterdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(6)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <div class="table-row striped" id="sun">
+                        <div class="table-col">Zondag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(7)) ?></div>
+                        <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                    </div>
+                    <hr class="divide">
+                    <div class="table-row table-head">
+                        <div class="table-col">Totaal:</div>
+                        <div class="table-col"><?= DashboardPage::calcWeekKilowattTotal() ?></div>
+                        <div class="table-col"><?= DashboardPage::calcWeekEuroTotal() ?></div>
+                    </div>
+                    <div class="table-row table-legend">
+                        <div class="table-col">"-" = geen data beschikbaar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

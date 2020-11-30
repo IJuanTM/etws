@@ -1,0 +1,77 @@
+.dashboard {
+  height: 74vmin;
+  padding: 8vmin;
+  display: flex;
+}
+
+.dash-row {
+  display: flex;
+  flex: 1;
+}
+
+.dash-day {
+  flex: 0 1 60%;
+}
+
+.dash-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dash-card {
+  height: 100%;
+  display: flex;
+  margin: 2vmin;
+  padding: 3vmin;
+  border-radius: 2vmin;
+  flex-direction: column;
+  background-color: #F5F5F5;
+  -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+}
+
+.card-head {
+  margin-top: 0;
+}
+
+.card-table {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.table-row {
+  flex: 1;
+  display: flex;
+  padding: 0 1.2vmin;
+  margin-bottom: .6vmin;
+}
+
+.table-row.striped {
+  background-color: #F0F0F0;
+}
+
+.table-row.current {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.table-col {
+  align-items: center;
+  font-size: 1.2rem;
+  display: flex;
+  flex: 1;
+}
+
+.table-head > div {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.table-legend > .table-col {
+  font-size: 1rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

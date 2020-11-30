@@ -1,0 +1,32 @@
+<div class="login center">
+    <div class="login-card">
+        <h1 class="login-head">Inloggen</h1>
+        <form class="login-form" method="POST" action="">
+            <?php if (!empty(FormController::$alert)) : ?>
+                <?= FormController::$alert ?>
+            <?php endif; ?>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email-login">Email:</label><span class="required">*</span>
+                    <div class="input-group">
+                        <div class="input-prepend"><i class="fas fa-at"></i></div>
+                        <input class="br-right" name="email-login" id="email-login" type="email" placeholder="Voer uw email in:">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password-login">Wachtwoord:</label><span class="required">*</span>
+                    <div class="input-group">
+                        <div class="input-prepend"><i class="fas fa-key"></i></div>
+                        <input name="password-login" id="password-login" type="password" placeholder="Voer uw wachtwoord in:">
+                        <div class="input-append"><i class="toggle-password fas fa-eye"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row">
+                <button type="submit" name="submit-login"><i class="fas fa-sign-in-alt"></i> Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
