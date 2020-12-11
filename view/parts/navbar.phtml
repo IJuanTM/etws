@@ -1,36 +1,12 @@
 <nav class="navbar">
     <div class="nav-row">
-        <?php
-        //        if (isset($_SESSION["user_role"])) {
-        //            switch ($_SESSION["user_role"]) {
-        //                case '0':
-        //                    echo '
-        //                        <div class="nav-col nav-left">
-        //                            <a href="' . PageController::url(REDIRECT) . '" class="nav-logo">' . ApplicationController::load_svg("logo") . '</a>
-        //                        </div>
-        //                        <div class="nav-col nav-right">
-        //                            <a href="' . PageController::url("admin") . '" class="nav-item nav-button nav-link center"><i class="fas fa-user-shield"></i>Admin</a>
-        //                            <a href="" class="nav-item nav-button nav-logout center" id="button-inner"><i class="fas fa-sign-out-alt"></i></a>
-        //                        </div>
-        //                    ';
-        //                    break;
-        //                case '1':
-        echo '
-            <div class="nav-col nav-left">
-                <a href="' . PageController::url(REDIRECT) . '" class="nav-logo">' . ApplicationController::load_svg("logo") . '</a>
-            </div>
-            <div class="nav-col nav-right">
-                <a href="' . PageController::url("account") . '" class="nav-item nav-button nav-link center"><i class="fas fa-user"></i>Account</a>
-                <a href="' . PageController::url("help") . '" class="nav-item nav-button nav-help center"><i class="fas fa-question"></i></a>
-                <a href="" class="nav-item nav-button nav-logout center" id="button-inner"><i class="fas fa-sign-out-alt"></i></a>
-            </div>
-        ';
-        //                    break;
-        //                default:
-        //                    header("Refresh: 1; url=" . $this->url('dashboard') . "");
-        //                    break;
-        //            }
-        //        }
-        ?>
+        <div class="nav-col nav-left">
+            <a href="<?= PageController::url(REDIRECT) ?>" class="nav-logo"><?= ApplicationController::load_svg("logo") ?></a>
+        </div>
+        <div class="nav-col nav-right">
+            <a href="<?= PageController::url("account") ?>" class="nav-item nav-button nav-link center"><i class="fas fa-user"></i>Account</a>
+            <a href="<?= PageController::url("help") ?>" class="nav-item nav-button nav-help center"><i class="fas fa-question"></i></a>
+            <a href="" class="nav-item nav-button nav-logout center" id="button-inner"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
     </div>
 </nav>

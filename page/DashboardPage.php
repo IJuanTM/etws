@@ -6,13 +6,15 @@ class DashboardPage
 {
     // Create static variable kwh
     private static string $kwh;
-    private static array $week = [];
+    private static array $kwhArr = [];
+    private static array $weekDateArr = [];
+    private static array $euroArr = [];
 
     // Function to display the right day to the table
     public static function selectDate($col_day): bool|string
     {
         // Gets real day in numeric value with monday = 1, tuesday = 2, wedne...
-        $real_day = date("N");
+        $real_day = date("N") - 1;
         // Checks if the current column is the same as the real day (-1, -2,-...)
         if ($col_day == $real_day) {
             // Returns the current date
@@ -34,7 +36,7 @@ class DashboardPage
             // Return a "-" if in day has yet to come this week
             return "-";
         }
-        array_push(self::$week, $date);
+        array_push(self::$weekDateArr, $date);
         return $date;
     }
 
@@ -51,6 +53,8 @@ class DashboardPage
         if (!empty($db->single())) {
             // Put the query output in the static variable kwh
             self::$kwh = $db->single()['kilowatt'];
+            // Push kwh in an array
+            array_push(self::$kwhArr, self::$kwh);
             // Returns a rounded kilowatt per hour as well as adding kWh at the end
             return round(self::$kwh, 2) . " kWh";
         } else {
@@ -62,25 +66,46 @@ class DashboardPage
     }
 
     // Function to calculate the saved amount in euro
-    #[Pure] public static function calcEuro(): string
+    public static function calcEuro(): string
     {
         // Check if kwh is not empty
         if (!empty(self::$kwh)) {
+            array_push(self::$euroArr, COST * self::$kwh);
             // Returns a string with a rounded value in euro
-            return "&plusmn; € " . round(COST * self::$kwh, 2);
+            return "&plusmn; € " . number_format(COST * self::$kwh, 2);
         } else {
             // Returns "-" as string
             return "-";
         }
     }
 
-    public static function calcWeekKilowattTotal()
+    #[Pure] public static function calcWeekKilowattTotal(): string
     {
-        var_dump(self::$week);
+        $total = 0;
+        // Check if kwhArr is not empty
+        if (!empty(self::$kwhArr)) {
+            for ($i = 0; $i < count(self::$weekDateArr) - 1; $i++) {
+                $total += self::$kwhArr[$i];
+            }
+            return $total . " kWh";
+        } else {
+            // Returns "-" as string
+            return "-";
+        }
     }
 
-    public static function calcWeekEuroTotal()
+    #[Pure] public static function calcWeekEuroTotal(): string
     {
-
+        $sum = 0;
+        // Check if weekDateArr is not empty
+        if (!empty(self::$weekDateArr)) {
+            for ($i = 0; $i < count(self::$weekDateArr) - 1; $i++) {
+                $sum += self::$euroArr[$i];
+            }
+            return "&plusmn; € " . number_format($sum, 2);
+        } else {
+            // Returns "-" as string
+            return "-";
+        }
     }
 }

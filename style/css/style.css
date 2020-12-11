@@ -1,0 +1,66 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: "Quicksand", "sans-serif";
+}
+
+.content {
+  height: 100%;
+  position: relative;
+}
+
+.content::after {
+  content: "";
+  background-size: 50%;
+  background-attachment: scroll;
+  background-position-y: center;
+  background-image: url("../../img/svg/logo.svg");
+  opacity: .5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.divide {
+  width: 100%;
+  margin: .4vmin 0 1vmin;
+  border: thin solid #000;
+}
+
+#load {
+  position: fixed;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  opacity: .75;
+  background-color: #FFF;
+}
+
+#load-img {
+  flex: 1;
+  display: flex;
+  -webkit-transition: -webkit-animation;
+  transition: animation;
+}
+
+#load-img > svg {
+  width: 20vmin;
+  height: 20vmin;
+  -webkit-animation: 2s infinite spin linear;
+  animation: 2s infinite spin linear;
+}

@@ -27,6 +27,11 @@
     ?>
 </head>
 <body>
+<!-- Loading icon -->
+<div id="load">
+    <div class="center" id="load-img"><?= ApplicationController::load_svg('logo') ?></div>
+</div>
+
 <!--Navbar-->
 <?php
 if ($this->urlArr['pagename'] != 'login') {

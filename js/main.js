@@ -58,3 +58,19 @@ $(document).ready(function () {
   const current = document.getElementById(day_id);
   current.className += " current";
 });
+
+// Load icon
+document.onreadystatechange = function () {
+  $("body").css("overflow", "hidden");
+  const state = document.readyState;
+  if (state === "interactive") {
+    document.getElementById("contents").style.visibility = "hidden";
+  } else if (state === "complete") {
+    setTimeout(function () {
+      $("body").css("overflow", "visible");
+      document.getElementById("interactive");
+      document.getElementById("load").style.visibility = "hidden";
+      document.getElementById("contents").style.visibility = "visible";
+    }, 100);
+  }
+};
