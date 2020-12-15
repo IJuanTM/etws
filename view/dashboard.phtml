@@ -5,12 +5,12 @@
                 <div class="dash-col">
                     <div class="dash-card">
                         <h1 class="card-head">Vandaag:</h1>
-                        <div class="card-table">
+                        <div class="card-table table-today">
                             <div class="table-row">
-                                <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(date("N"))) ?></div>
+                                <div class="table-col col-xlarge center"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(date("N") - 1)) ?></div>
                             </div>
                             <div class="table-row">
-                                <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
+                                <div class="table-col col-medium center"><?= DashboardPage::calcEuro() ?></div>
                             </div>
                         </div>
                     </div>
@@ -20,11 +20,27 @@
                 <div class="dash-col">
                     <div class="dash-card">
                         <h1 class="card-head">Deze maand:</h1>
+                        <div class="card-table table-month">
+                            <div class="table-row">
+                                <div class="table-col col-large center"><?= DashboardPage::calcMonthKilowattTotal() . " kWh" ?></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col col-small center"><?= "&plusmn; € " . number_format(DashboardPage::calcMonthKilowattTotal() * COST, 2) ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="dash-col">
                     <div class="dash-card">
                         <h1 class="card-head">Totaal:</h1>
+                        <div class="card-table table-total">
+                            <div class="table-row">
+                                <div class="table-col col-large center"><?= DashboardPage::calcKilowattTotal() . " kWh" ?></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col col-small center"><?= "&plusmn; € " . number_format(DashboardPage::calcKilowattTotal() * COST, 2) ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,48 +50,48 @@
                 <h1 class="card-head">Deze Week:</h1>
                 <div class="card-table table-week">
                     <div class="table-row table-head">
-                        <div class="table-col">Dag:</div>
+                        <div class="table-col first-col">Dag:</div>
                         <div class="table-col">Bespaard (kWh):</div>
                         <div class="table-col">Bespaard (€):</div>
                     </div>
-                    <div class="table-row striped" id="mon">
-                        <div class="table-col">Maandag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(0)) ?></div>
+                    <div class="table-row row-hover striped" id="mon">
+                        <div class="table-col first-col">Maandag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(0)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
-                    <div class="table-row" id="tue">
-                        <div class="table-col">Dinsdag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(1)) ?></div>
+                    <div class="table-row row-hover" id="tue">
+                        <div class="table-col first-col">Dinsdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(1)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
-                    <div class="table-row striped" id="wed">
-                        <div class="table-col">Woensdag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(2)) ?></div>
+                    <div class="table-row row-hover striped" id="wed">
+                        <div class="table-col first-col">Woensdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(2)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
-                    <div class="table-row" id="thu">
-                        <div class="table-col">Donderdag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(3)) ?></div>
+                    <div class="table-row row-hover" id="thu">
+                        <div class="table-col first-col">Donderdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(3)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
-                    <div class="table-row striped" id="fri">
-                        <div class="table-col">Vrijdag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(4)) ?></div>
+                    <div class="table-row row-hover striped" id="fri">
+                        <div class="table-col first-col">Vrijdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(4)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
-                    <div class="table-row" id="sat">
-                        <div class="table-col">Zaterdag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(5)) ?></div>
+                    <div class="table-row row-hover" id="sat">
+                        <div class="table-col first-col">Zaterdag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(5)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
-                    <div class="table-row striped" id="sun">
-                        <div class="table-col">Zondag</div>
-                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectDate(6)) ?></div>
+                    <div class="table-row row-hover striped" id="sun">
+                        <div class="table-col first-col">Zondag</div>
+                        <div class="table-col"><?= DashboardPage::getKilowatt(DashboardPage::selectWeekDate(6)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcEuro() ?></div>
                     </div>
                     <hr class="divide">
                     <div class="table-row table-head">
-                        <div class="table-col">Totaal:</div>
+                        <div class="table-col first-col">Totaal:</div>
                         <div class="table-col"><?= DashboardPage::calcWeekKilowattTotal() ?></div>
                         <div class="table-col"><?= DashboardPage::calcWeekEuroTotal() ?></div>
                     </div>

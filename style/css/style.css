@@ -36,9 +36,8 @@ a {
 }
 
 .divide {
-  width: 100%;
   margin: .4vmin 0 1vmin;
-  border: thin solid #000;
+  border: thin solid #000000;
 }
 
 #load {
@@ -48,7 +47,7 @@ a {
   width: 100vw;
   z-index: 10;
   opacity: .75;
-  background-color: #FFF;
+  background-color: #FFFFFF;
 }
 
 #load-img {

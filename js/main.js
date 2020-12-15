@@ -56,7 +56,7 @@ $(document).ready(function () {
   }
 
   const current = document.getElementById(day_id);
-  current.className += " current";
+  if (current) current.className += " current";
 });
 
 // Load icon

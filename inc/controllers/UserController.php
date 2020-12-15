@@ -18,7 +18,7 @@ class UserController
             if ($_SESSION["user_role"] === 0) {
                 FormController::form_message('Inlog successvol! Welkom admin.', 'info', 'dashboard');
             } elseif ($_SESSION["user_role"] === 1) {
-                FormController::form_message('Inlog successful! Welkom gebruiker!', 'success', 'dashboard');
+                FormController::form_message('Inlog successful! Welkom bij uw ETWS systeem!', 'success', 'dashboard');
             } else {
                 FormController::form_message('Error! Er is geen rol gedefineerd voor dit account! Neem contact op met een admin!', 'error', 'login');
                 unset($_SESSION["user_role"]);

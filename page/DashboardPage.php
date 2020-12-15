@@ -11,7 +11,7 @@ class DashboardPage
     private static array $euroArr = [];
 
     // Function to display the right day to the table
-    public static function selectDate($col_day): bool|string
+    public static function selectWeekDate($col_day): bool|string
     {
         // Gets real day in numeric value with monday = 1, tuesday = 2, wedne...
         $real_day = date("N") - 1;
@@ -100,12 +100,54 @@ class DashboardPage
         // Check if weekDateArr is not empty
         if (!empty(self::$weekDateArr)) {
             for ($i = 0; $i < count(self::$weekDateArr) - 1; $i++) {
-                $sum += self::$euroArr[$i];
+                if (!empty(self::$euroArr)) {
+                    // Add item in array to sum
+                    $sum += self::$euroArr[$i];
+                } else {
+                    // Returns "-" as string
+                    return "-";
+                }
             }
             return "&plusmn; € " . number_format($sum, 2);
         } else {
             // Returns "-" as string
             return "-";
         }
+    }
+
+    public static function calcMonthKilowattTotal(): string
+    {
+        // Make new variable from class Database
+        $db = new Database();
+        // Query to select the data from the kilowatt column in the etws_data table where the date is set to the date returned by the setDate function
+        $db->query('SELECT kilowatt FROM etws_data WHERE date LIKE :date');
+        // Binds the pdo value date to the variable date
+        $db->bind(':date', date("Y-m-%"));
+        // Create a list of all returned items
+        $list = $db->resultset();
+        $kwh = 0;
+        // Add each item in variable kwh
+        foreach ($list as $value) {
+            $kwh += $value['kilowatt'];
+        }
+        // Returned calculated value
+        return number_format($kwh, 2);
+    }
+
+    public static function calcKilowattTotal(): string
+    {
+        // Make new variable from class Database
+        $db = new Database();
+        // Query to select the data from the kilowatt column in the etws_data table where the date is set to the date returned by the setDate function
+        $db->query('SELECT kilowatt FROM etws_data');
+        // Create a list of all returned items
+        $list = $db->resultset();
+        $kwh = 0;
+        // Add each item in variable kwh
+        foreach ($list as $value) {
+            $kwh += $value['kilowatt'];
+        }
+        // Returned calculated value
+        return number_format($kwh, 2);
     }
 }

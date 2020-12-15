@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS user
   DEFAULT CHARSET = utf8;
 
 INSERT INTO user (user_id, product, email, password, join_date, activated, firstname, lastname, birthdate, phone, country, province, city, zipcode, street, streetnumber)
-VALUES (1, 1, 'user@mail.nl', 'test', '2020-11-21', 1, 'henk', 'kaas', '1982-04-06', 0612345678, 'Nederland', 'Utrecht', 'Utrecht', '3522AB', 'Straatweg', 33);
+VALUES (1, 1, 'user@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-11-21', 1, 'henk', 'kaas', '1982-04-06', 0612345678, 'Nederland', 'Utrecht', 'Utrecht', '3522AB', 'Straatweg', 33);
 
 COMMIT;
 

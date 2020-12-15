@@ -26,7 +26,7 @@ com.pipe(parser);
 function insertSqlData(line) {
   line = line.replace(/[^\d.-]/g, '');
   if (line) {
-    con.query(`INSERT INTO etws_data (product, kilowatt, date) VALUES (1, "${line}", "2012-12-12")`, function (err, result, fields) {
+    con.query(`INSERT INTO etws_data (product, kilowatt, date) VALUES (1, "${line}", curdate())`, function (err, result, fields) {
       if (err) throw err;
       return console.log(`${line}`);
     })

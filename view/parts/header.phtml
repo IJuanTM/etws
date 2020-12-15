@@ -35,7 +35,14 @@
 <!--Navbar-->
 <?php
 if ($this->urlArr['pagename'] != 'login') {
-    $this->get_part('navbar');
+    if (isset($_SESSION["user_role"])) {
+        $this->get_part('navbar');
+    } else {
+        if ($this->urlArr['pagename'] != 'logout') {
+            require_once ERROR_403_PAGE;
+            header("Refresh: 2; url=" . PageController::url('login') . "");
+        }
+    }
 }
 ?>
 
