@@ -8,7 +8,9 @@
     "mysql": "^2.18.1",
     "serialport": "^9.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@serialport/parser-readline": "^9.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

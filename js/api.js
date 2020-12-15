@@ -3,14 +3,14 @@ const mysql = require("mysql");
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
 
-const com = new SerialPort("COM4", {baudRate: 9600});
+const com = new SerialPort("COM3", {baudRate: 9600});
 const parser = new Readline();
 const app = express();
 
 const con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
+  user: "etws",
+  password: "login",
   database: "etws_db"
 });
 
@@ -21,11 +21,19 @@ con.connect((err) => {
 
 com.pipe(parser);
 
-parser.on('data', line => con.query(`INSERT INTO etws_data (volt) VALUES ("${line}")`, function (err, result, fields) {
-    if (err) throw err;
-    return console.log(`${line}`);
-  })
-);
+// var values = parser.on('data', line => line.replace(/[^\d.-]/g, ''));
+
+function insertSqlData(line) {
+  line = line.replace(/[^\d.-]/g, '');
+  if (line) {
+    con.query(`INSERT INTO etws_data (product, kilowatt, date) VALUES (1, "${line}", "2012-12-12")`, function (err, result, fields) {
+      if (err) throw err;
+      return console.log(`${line}`);
+    })
+  }
+}
+
+parser.on('data', line => insertSqlData(line));
 
 app.get("/api/etws_serialdata", (req, res) => {
   con.query("SELECT * FROM etws_data", function (err, result, fields) {
