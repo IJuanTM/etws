@@ -41,22 +41,53 @@ class DashboardPage
     }
 
     // Function to get the kilowatt value from the data base, pushes it to calculate wattage function.
-    public static function getKilowatt($date): string
+    public static function getDayKilowatt($date): string
     {
         // Make new variable from class Database
         $db = new Database();
         // Query to select the data from the kilowatt column in the etws_data table where the date is set to the date returned by the setDate function
-        $db->query('SELECT kilowatt FROM etws_data WHERE date = :date');
+        $db->query('SELECT kilowatt FROM etws_data WHERE date = :date AND product = :product');
         // Binds the pdo value date to the variable date
         $db->bind(':date', $date);
+        $db->bind(':product', $_SESSION['product']);
         // Checks if query has returned anything
         if (!empty($db->single())) {
-            // Put the query output in the static variable kwh
-            self::$kwh = $db->single()['kilowatt'];
+            $kwh = 0;
+            foreach ($db->resultset() as $value) {
+                $kwh += $value['kilowatt'];
+            }
+            self::$kwh = $kwh;
+            // Returns a rounded kilowatt per hour as well as adding kWh at the end
+            return number_format(self::$kwh, 2) . " kWh";
+        } else {
+            // Set the static variable kwh to be null
+            self::$kwh = "";
+            // Return "-" if query is empty
+            return "-";
+        }
+    }
+
+    // Function to get the kilowatt value from the data base, pushes it to calculate wattage function.
+    public static function getWeekKilowatt($date): string
+    {
+        // Make new variable from class Database
+        $db = new Database();
+        // Query to select the data from the kilowatt column in the etws_data table where the date is set to the date returned by the setDate function
+        $db->query('SELECT kilowatt FROM etws_data WHERE date = :date AND product = :product');
+        // Binds the pdo value date to the variable date
+        $db->bind(':date', $date);
+        $db->bind(':product', $_SESSION['product']);
+        // Checks if query has returned anything
+        if (!empty($db->single())) {
+            $kwh = 0;
+            foreach ($db->resultset() as $value) {
+                $kwh += $value['kilowatt'];
+            }
+            self::$kwh = $kwh;
             // Push kwh in an array
             array_push(self::$kwhArr, self::$kwh);
             // Returns a rounded kilowatt per hour as well as adding kWh at the end
-            return round(self::$kwh, 2) . " kWh";
+            return number_format(self::$kwh, 2) . " kWh";
         } else {
             // Set the static variable kwh to be null
             self::$kwh = "";
@@ -87,7 +118,7 @@ class DashboardPage
             for ($i = 0; $i < count(self::$weekDateArr) - 1; $i++) {
                 $total += self::$kwhArr[$i];
             }
-            return $total . " kWh";
+            return number_format($total, 2) . " kWh";
         } else {
             // Returns "-" as string
             return "-";
@@ -119,15 +150,15 @@ class DashboardPage
     {
         // Make new variable from class Database
         $db = new Database();
-        // Query to select the data from the kilowatt column in the etws_data table where the date is set to the date returned by the setDate function
-        $db->query('SELECT kilowatt FROM etws_data WHERE date LIKE :date');
-        // Binds the pdo value date to the variable date
+        // Query to select the data from the kilowatt column in the etws_data table where the date is set to any date in this month
+        $db->query('SELECT kilowatt FROM etws_data WHERE date LIKE :date AND product = :product');
+        // Binds the pdo value date to the variable date and binds product to the right user
         $db->bind(':date', date("Y-m-%"));
+        $db->bind(':product', $_SESSION['product']);
         // Create a list of all returned items
-        $list = $db->resultset();
         $kwh = 0;
         // Add each item in variable kwh
-        foreach ($list as $value) {
+        foreach ($db->resultset() as $value) {
             $kwh += $value['kilowatt'];
         }
         // Returned calculated value
@@ -138,13 +169,14 @@ class DashboardPage
     {
         // Make new variable from class Database
         $db = new Database();
-        // Query to select the data from the kilowatt column in the etws_data table where the date is set to the date returned by the setDate function
-        $db->query('SELECT kilowatt FROM etws_data');
+        // Query to select all the data from the kilowatt column in the etws_data table
+        $db->query('SELECT kilowatt FROM etws_data WHERE product = :product');
+        // Binds the pdo value product to the session product
+        $db->bind(':product', $_SESSION['product']);
         // Create a list of all returned items
-        $list = $db->resultset();
         $kwh = 0;
         // Add each item in variable kwh
-        foreach ($list as $value) {
+        foreach ($db->resultset() as $value) {
             $kwh += $value['kilowatt'];
         }
         // Returned calculated value

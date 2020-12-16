@@ -2,6 +2,8 @@
 @import "style.css";
 
 @import "view/dashboard.css";
+@import "view/account.css";
+@import "view/logout.css";
 @import "view/login.css";
 @import "view/help.css";
 

@@ -52,8 +52,9 @@ CREATE TABLE IF NOT EXISTS etws_product
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-INSERT INTO etws_product (product_id, installation_date, status)
-VALUES (1, curdate(), 1);
+INSERT INTO etws_product (installation_date, status)
+VALUES (curdate(), 1),
+       (curdate() - 100, 1);
 
 -- --------------------------------------------------------
 
@@ -74,10 +75,11 @@ CREATE TABLE IF NOT EXISTS etws_data
   DEFAULT CHARSET = utf8;
 
 INSERT INTO etws_data (product, kilowatt, date)
-VALUES (1, 2.03, curdate() - 4),
-       (1, 0.44, curdate() - 3),
-       (1, 0.12, curdate() - 2),
-       (1, 1.14, curdate() - 1),
+VALUES (2, 1.14, curdate() - 1),
+       (1, 0.34, curdate() - 1),
+       (1, 0.66, curdate() - 1),
+       (2, 1.83, curdate()),
+       (2, 0.53, curdate()),
        (1, 0.58, curdate());
 
 -- --------------------------------------------------------
@@ -116,8 +118,9 @@ CREATE TABLE IF NOT EXISTS user
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-INSERT INTO user (user_id, product, email, password, join_date, activated, firstname, lastname, birthdate, phone, country, province, city, zipcode, street, streetnumber)
-VALUES (1, 1, 'user@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-11-21', 1, 'henk', 'kaas', '1982-04-06', 0612345678, 'Nederland', 'Utrecht', 'Utrecht', '3522AB', 'Straatweg', 33);
+INSERT INTO user (product, email, password, join_date, activated, firstname, lastname, birthdate, phone, country, province, city, zipcode, street, streetnumber)
+VALUES (1, 'user@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-11-21', 1, 'Henk', 'Kaas', '1982-04-06', 0612345678, 'Nederland', 'Utrecht', 'Utrecht', '3522AB', 'Straatweg', 33),
+       (2, 'user2@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-12-12', 1, 'John', 'Cheese', '1999-08-15', 0687654321, 'Nederland', 'Zuid-Holland', 'Den Haag', '1022AB', 'Wegstraat', 45);
 
 COMMIT;
 

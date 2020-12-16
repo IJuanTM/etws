@@ -17,6 +17,7 @@
 }
 
 .nav-left {
+  flex: 0 1 15%;
   padding-left: 1vmin;
 }
 
@@ -25,8 +26,14 @@
   padding-right: 1vmin;
 }
 
+.nav-logo {
+  display: flex;
+  flex: 0 1 25% !important;
+}
+
 .nav-logo > svg {
   height: 100%;
+  padding: 0 !important;
   -webkit-transition: -webkit-transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
 }
@@ -36,13 +43,25 @@
   transform: rotate(180deg);
 }
 
+.nav-text {
+  display: flex;
+  align-items: center;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
 .nav-item {
   flex: 1;
   margin: 1vmin;
   padding: 0 2vmin;
   border-radius: 1vmin;
   font-size: 2.6vmin;
-  font-weight: bold;
+  font-weight: 600;
+}
+
+.nav-item.nav-logo {
+  padding: 0;
+  margin: 0;
 }
 
 .nav-item > svg {

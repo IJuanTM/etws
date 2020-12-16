@@ -14,6 +14,7 @@ class UserController
             $record = $db->resultset()[0];
             $_SESSION['id'] = $record['user_id'];
             $_SESSION['email'] = $record['email'];
+            $_SESSION['product'] = $record['product'];
             $_SESSION['user_role'] = (int)$record['user_role'];
             if ($_SESSION["user_role"] === 0) {
                 FormController::form_message('Inlog successvol! Welkom admin.', 'info', 'dashboard');

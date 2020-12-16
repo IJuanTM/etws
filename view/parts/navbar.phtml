@@ -1,7 +1,11 @@
 <nav class="navbar">
     <div class="nav-row">
         <div class="nav-col nav-left">
-            <a href="<?= PageController::url(REDIRECT) ?>" class="nav-logo"><?= ApplicationController::load_svg("logo") ?></a>
+            <a href="<?= PageController::url(REDIRECT) ?>" class="nav-item nav-logo"><?= ApplicationController::load_svg("logo") ?></a>
+            <div class="nav-item nav-text">ETWS</div>
+        </div>
+        <div class="nav-col nav-center">
+            <div class="nav-item center">Product: <?= $_SESSION['product'] ?></div>
         </div>
         <div class="nav-col nav-right">
             <a href="<?= PageController::url("account") ?>" class="nav-item nav-button nav-link center"><i class="fas fa-user"></i>Account</a>
