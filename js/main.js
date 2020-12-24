@@ -14,9 +14,10 @@ $(document).on('click', '.toggle-password', function () {
   passwordInput.attr('type') === 'password' ? passwordInput.attr('type', 'text') : passwordInput.attr('type', 'password');
 });
 
-// Day
+// On page load
 $(document).ready(function () {
 
+  // Get day and translate to mon, tue, wed...
   let day_id
   switch (new Date().getDay()) {
     case 0:
@@ -41,9 +42,9 @@ $(document).ready(function () {
       day_id = "sat";
   }
 
+  // Ajax code every minute to check if day is changed
   function day() {
     $.ajax({
-      url: baseUrl + 'view/parts/ajax/day.php',
       success: function (data) {
         $(day_id).html(data);
         window.setTimeout(day, 60000);
@@ -51,12 +52,29 @@ $(document).ready(function () {
     });
   }
 
-  if (location.href === baseUrl || location.href === baseUrl + '/dashboard') {
-    day();
-  }
+  // Run ajax code only on dashboard page
+  if (location.href === baseUrl + '/dashboard') day();
 
+  // Add current class to the right day
   const current = document.getElementById(day_id);
   if (current) current.className += " current";
+
+  // // Ajax code to automatically update kwh
+  // function kwh() {
+  //   $.ajax({
+  //     url: baseUrl + 'view/parts/ajax/display.php',
+  //     success: function (data) {
+  //       $("#display").html(data);
+  //       console.log(data);
+  //       window.setTimeout(kwh, 1000);
+  //     }
+  //   });
+  // }
+  //
+  // console.log(kwh());
+  //
+  // // Run ajax code only on dashboard page
+  // if (location.href === baseUrl + '/dashboard') kwh();
 });
 
 // Load icon
@@ -64,13 +82,13 @@ document.onreadystatechange = function () {
   $("body").css("overflow", "hidden");
   const state = document.readyState;
   if (state === "interactive") {
-    document.getElementById("contents").style.visibility = "hidden";
+    document.getElementById("content").style.visibility = "hidden";
   } else if (state === "complete") {
     setTimeout(function () {
       $("body").css("overflow", "visible");
       document.getElementById("interactive");
       document.getElementById("load").style.visibility = "hidden";
-      document.getElementById("contents").style.visibility = "visible";
+      document.getElementById("content").style.visibility = "visible";
     }, 100);
   }
 };

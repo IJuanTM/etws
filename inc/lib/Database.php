@@ -17,6 +17,8 @@ class Database
             $this->pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, $options);
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
+            require_once ERROR_500_PAGE;
+            header("Refresh: 2; url=" . PageController::url('login') . "");
         }
     }
 

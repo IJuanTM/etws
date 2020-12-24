@@ -75,12 +75,15 @@ CREATE TABLE IF NOT EXISTS etws_data
   DEFAULT CHARSET = utf8;
 
 INSERT INTO etws_data (product, kilowatt, date)
-VALUES (2, 1.14, curdate() - 1),
-       (1, 0.34, curdate() - 1),
-       (1, 0.66, curdate() - 1),
-       (2, 1.83, curdate()),
-       (2, 0.53, curdate()),
-       (1, 0.58, curdate());
+VALUES (1, 0.23, curdate() - 6),
+       (1, 0.04, curdate() - 5),
+       (1, 0.12, curdate() - 5),
+       (1, 0.07, curdate() - 4),
+       (1, 0.12, curdate() - 2),
+       (1, 0.34, curdate() - 2),
+       (1, 0.22, curdate() - 1),
+       (1, 0.05, curdate() - 1),
+       (1, 0.12, curdate());
 
 -- --------------------------------------------------------
 

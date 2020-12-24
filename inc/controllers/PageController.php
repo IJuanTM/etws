@@ -35,14 +35,14 @@ class PageController extends PageModel
         $page = $this->urlArr['pagename'];
 
         // Set to home if none given
-        if (empty($page)) $page = REDIRECT;
+        if (empty($page)) $page = 'login';
 
         // Load the needed PHP class that corresponds with the page
         $objName = ucfirst(strtolower($page)) . 'Page';
         if (class_exists($objName)) $this->pageObj = new $objName($this->urlArr);
         else {
             require_once ERROR_404_PAGE;
-            header("Refresh: 2; url=" . PageController::url(REDIRECT) . "");
+            header("Refresh: 2; url=" . PageController::url('login') . "");
             exit();
         }
 
@@ -53,7 +53,7 @@ class PageController extends PageModel
         if (file_exists(VIEW . $page . '.phtml')) require VIEW . $page . '.phtml';
         else {
             require_once ERROR_404_PAGE;
-            header("Refresh: 2; url=" . PageController::url(REDIRECT) . "");
+            header("Refresh: 2; url=" . PageController::url('login') . "");
             exit();
         }
 

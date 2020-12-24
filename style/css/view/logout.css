@@ -1,5 +1,5 @@
 .logout {
-  height: 98vmin;
+  height: calc(100vh - 2vmin);
 }
 
 .logout > .alert {

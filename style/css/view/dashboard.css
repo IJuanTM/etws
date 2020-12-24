@@ -1,36 +1,17 @@
 .dashboard {
-  height: 74vmin;
+  min-height: calc(100vh - 26vmin);
   padding: 8vmin;
-  display: flex;
   font-family: "Comfortaa", "Quicksand", sans-serif;
 }
 
-.dash-row {
-  display: flex;
-  flex: 1;
+@media (max-width: 991.98px) {
+  .dashboard > .page-row {
+    flex-direction: column;
+  }
 }
 
 .dash-day {
   flex: 0 1 60%;
-}
-
-.dash-col {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.dash-card {
-  height: 100%;
-  display: flex;
-  margin: 2vmin;
-  padding: 3vmin;
-  border-radius: 2vmin;
-  flex-direction: column;
-  background-color: #F5F5F5;
-  -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
-  -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
 }
 
 .card-head {
@@ -51,6 +32,10 @@
   display: flex;
   padding: 0 1.2vmin;
   margin-bottom: .6vmin;
+}
+
+.row-text {
+  flex: 0 1 20%;
 }
 
 .table-row.striped {
@@ -79,24 +64,32 @@
   flex: 0 1 25%;
 }
 
-.col-medium {
-  font-size: 4vmin;
-  font-weight: 400;
-}
-
 .col-small {
   font-size: 2vmin;
   font-weight: 400;
+  margin-top: .4vmin;
+}
+
+.col-medium {
+  font-size: 4vmin;
+  font-weight: 400;
+  margin-top: .6vmin;
 }
 
 .col-large {
   font-size: 4vmin;
   font-weight: 600;
+  margin-top: .8vmin;
 }
 
 .col-xlarge {
   font-size: 8vmin;
   font-weight: 800;
+  margin-top: 1vmin;
+}
+
+.col-text {
+  text-align: center;
 }
 
 .table-head > .table-col {
@@ -109,10 +102,4 @@
   font-size: 1.6vmin;
   align-items: flex-end;
   justify-content: flex-end;
-}
-
-@media (max-width: 991.98px) {
-  .dashboard > .dash-row {
-    flex-direction: column;
-  }
 }

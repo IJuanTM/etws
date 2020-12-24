@@ -17,15 +17,15 @@ class UserController
             $_SESSION['product'] = $record['product'];
             $_SESSION['user_role'] = (int)$record['user_role'];
             if ($_SESSION["user_role"] === 0) {
-                FormController::form_message('Inlog successvol! Welkom admin.', 'info', 'dashboard');
+                FormController::form_message('Inlog successvol! Welkom admin.', 'info', 1, 'dashboard');
             } elseif ($_SESSION["user_role"] === 1) {
-                FormController::form_message('Inlog successful! Welkom bij uw ETWS systeem!', 'success', 'dashboard');
+                FormController::form_message('Inlog successful! Welkom bij uw ETWS systeem!', 'success', 1, 'dashboard');
             } else {
-                FormController::form_message('Error! Er is geen rol gedefineerd voor dit account! Neem contact op met een admin!', 'error', 'login');
+                FormController::form_message('Error! Er is geen rol gedefineerd voor dit account! Neem contact op met een admin!', null, 'error', 'login');
                 unset($_SESSION["user_role"]);
             }
         } else {
-            FormController::form_message('Het ingevoerde email of wachtwoord is niet juist!', 'warning', 'login');
+            FormController::form_message('De ingevoerde gegevens zijn niet juist!', 'warning', null, 'login');
         }
     }
 }

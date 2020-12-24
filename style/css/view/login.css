@@ -1,15 +1,30 @@
 .login {
-  height: 98vmin;
+  height: calc(100vh - 50vmin);
+  padding: 24vmin 42vmin;
 }
 
-.login-card {
-  margin: 2vmin;
-  padding: 3vmin;
-  border-radius: 2vmin;
-  background-color: #F5F5F5;
-  -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
-  -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .25);
+@media (min-width: 1200px) {
+  .login {
+    padding: 24vmin 32.5%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .login {
+    padding: 24vmin 20%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .login {
+    padding: 24vmin 12.5%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .login {
+    padding: 24vmin 5%;
+  }
 }
 
 .login-head {
@@ -17,6 +32,8 @@
   margin: 2vmin 0;
   font-size: 4vmin;
 }
+
+/*Form Alerts*/
 
 div.alert {
   position: relative;
@@ -219,22 +236,4 @@ form > div.btn-row > button:hover {
   -webkit-box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
   -moz-box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
   box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, .25);
-}
-
-@media (max-width: 575.98px) {
-  form {
-    width: 80vw;
-  }
-}
-
-@media (min-width: 576px) {
-  form {
-    width: 60vw;
-  }
-}
-
-@media (min-width: 992px) {
-  form.login-form {
-    width: 25vw;
-  }
 }

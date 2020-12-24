@@ -10,10 +10,10 @@ class LoginPage
                 if (!empty($_POST['password-login'])) {
                     UserController::userLogin($_POST['email-login'], $_POST['password-login']);
                 } else {
-                    FormController::form_message('Voer een wachtwoord in!', 'warning', 'login');
+                    FormController::form_message('Voer een wachtwoord in!', 'warning', null, 'login');
                 }
             } else {
-                FormController::form_message('Voer een email in!', 'warning', 'login');
+                FormController::form_message('Voer een email in!', 'warning', null, 'login');
             }
         }
     }
