@@ -1,11 +1,13 @@
 @import "@keyframes.css";
+@import "dark-mode.css";
 @import "style.css";
 
-@import "view/dashboard.css";
 @import "view/account.css";
-@import "view/logout.css";
-@import "view/login.css";
+@import "view/dashboard.css";
 @import "view/help.css";
+@import "view/login.css";
+@import "view/logout.css";
 
+@import "view/parts/content.css";
 @import "view/parts/footer.css";
 @import "view/parts/navbar.css";

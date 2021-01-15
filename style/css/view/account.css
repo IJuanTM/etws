@@ -1,5 +1,61 @@
 .account {
-  height: calc(100vh - 26vmin);
-  padding: 8vmin 24vmin;
-  font-family: "Comfortaa", "Quicksand", sans-serif;
+  min-height: 66vh;
+}
+
+@media (min-width: 1200px) {
+  .account {
+    padding: 12vh 22.5%;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .account {
+    padding: 12vh 10%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .account {
+    min-height: 74vh;
+    padding: 8vh 15%;
+  }
+
+  .account .col-left {
+    flex-grow: 1 !important;
+  }
+
+  .account-table .first-col {
+    min-width: 36vmin !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .account {
+    min-height: 82vh;
+    padding: 4vh 12.5%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .account {
+    min-height: 82vh;
+    padding: 4vh 5%;
+  }
+}
+
+.account .col-left {
+  flex-grow: 0;
+  min-width: 52vmin;
+}
+
+.account-card {
+  margin: 0;
+}
+
+.account-head {
+  margin-top: 3vh !important;
+}
+
+.account-table .first-col {
+  min-width: 24vmin;
 }

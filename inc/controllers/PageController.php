@@ -80,7 +80,7 @@ class PageController extends PageModel
     {
         // Add parameter
         list($page, $fragment) = explode('#', $url . '#', 2);
-        $c = (false === strpos($page, '?')) ? '?' : '&';
+        $c = (!str_contains($page, '?')) ? '?' : '&';
         $page .= $c . http_build_query($parameters);
         return $page . ($fragment ? '#' . $fragment : '');
     }
@@ -101,9 +101,7 @@ class PageController extends PageModel
             ob_start();
             require $file;
             $return = ob_get_contents();
-        } else {
-            $return = false;
-        }
+        } else $return = false;
         ob_end_clean();
         return $return;
     }

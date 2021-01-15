@@ -1,0 +1,21 @@
+.content {
+  z-index: 0;
+  position: relative;
+  height: calc(100% - 10vh);
+  font-family: "Quicksand", "Comfortaa", sans-serif;
+}
+
+.content::after {
+  content: "";
+  background-size: 50%;
+  background-attachment: scroll;
+  background-position-y: center;
+  background-image: url("../../../../img/svg/logo.svg");
+  opacity: .5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}

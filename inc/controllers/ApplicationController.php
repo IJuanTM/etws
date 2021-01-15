@@ -21,9 +21,8 @@ class ApplicationController extends ApplicationModel
     {
         // A clever svg loader
         $file = BASEDIR . SVG . $name . '.svg';
-        if (file_exists($file)) {
-            return file_get_contents($file);
-        } else {
+        if (file_exists($file)) return file_get_contents($file);
+        else {
             echo $file;
             exit();
         }
@@ -44,11 +43,8 @@ class ApplicationController extends ApplicationModel
         for ($i = 0; $i < strlen($value); ++$i) {
             $char = $value[$i];
             $ord = ord($char);
-            if ($char !== "'" && $char !== "\"" && $char !== '\\' && $ord >= 32 && $ord <= 126) {
-                $return .= $char;
-            } else {
-                $return .= '\\x' . dechex($ord);
-            }
+            if ($char !== "'" && $char !== "\"" && $char !== '\\' && $ord >= 32 && $ord <= 126) $return .= $char;
+            else $return .= '\\x' . dechex($ord);
         }
         return $return;
     }

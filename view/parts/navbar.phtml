@@ -1,16 +1,17 @@
 <nav class="navbar">
     <div class="nav-row">
         <div class="nav-col nav-left">
-            <a href="<?= PageController::url(REDIRECT) ?>" class="nav-item nav-logo"><?= ApplicationController::load_svg("logo") ?></a>
-            <div class="nav-item nav-text">ETWS</div>
-        </div>
-        <div class="nav-col nav-center">
-            <div class="nav-item center">Product: <?= $_SESSION['product'] ?></div>
+            <a href="<?= PageController::url(REDIRECT) ?>" class="nav-item nav-logo center" title="Dashboard pagina"><?= ApplicationController::load_svg("logo") ?></a>
+            <a href="<?= PageController::url(REDIRECT) ?>" class="nav-item nav-text center" title="Dashboard pagina">ETWS</a>
         </div>
         <div class="nav-col nav-right">
-            <a href="<?= PageController::url("account") ?>" class="nav-item nav-button nav-link center"><i class="fas fa-user"></i>Account</a>
-            <a href="<?= PageController::url("help") ?>" class="nav-item nav-button nav-help center"><i class="fas fa-question"></i></a>
-            <a href="<?= PageController::url("logout") ?>" class="nav-item nav-button nav-logout center" id="button-inner"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="<?= PageController::url("account") ?>" class="nav-item center" title="Account pagina"><i class="fas fa-user"></i>Account</a>
+            <a href="<?= PageController::url("help") ?>" class="nav-item nav-button nav-help center" title="Hulp pagina"><i class="fas fa-question"></i></a>
+            <a href="<?= PageController::url("logout") ?>" class="nav-item nav-button nav-logout center" id="button-inner" title="Uitloggen"><i class="fas fa-sign-out-alt"></i></a>
+            <a class="nav-item nav-switch center" id="switch-btn" title="Schakel tussen donkere of lichte modus">
+                <input class="switch-input" type="checkbox" id="switch">
+                <label class="switch-label center" for="switch"><i class="fas" id="toggle-icon"></i></label>
+            </a>
         </div>
     </div>
 </nav>

@@ -1,13 +1,23 @@
-<div class="page dashboard">
+<div class="page dashboard" id="display">
     <div class="page-row">
         <div class="page-col">
             <div class="page-row dash-day">
                 <div class="page-col">
                     <div class="page-card">
-                        <h1 class="card-head">Vandaag:</h1>
+                        <div class="card-row">
+                            <div class="card-col">
+                                <h1 class="card-head">Vandaag:</h1>
+                            </div>
+                            <div class="card-col col-reload col-right">
+                                <div class="reload">
+                                    <span class="reload-text">Ophalen...</span>
+                                    <i class="fas fa-sync-alt" id="reload"></i>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-table table-today">
                             <div class="table-row">
-                                <div class="table-col col-xlarge center" id="display"><?= DashboardPage::getDayKilowatt(DATE) ?></div>
+                                <div class="table-col col-xlarge center"><?= DashboardPage::getDayKilowatt(DATE) ?></div>
                             </div>
                             <div class="table-row">
                                 <div class="table-col col-medium center"><?= DashboardPage::calcDayEuro() ?></div>
@@ -50,11 +60,18 @@
         </div>
         <div class="page-col">
             <div class="page-card">
-                <h1 class="card-head">Deze Week:</h1>
+                <div class="card-row">
+                    <div class="card-col">
+                        <h1 class="card-head">Deze Week:</h1>
+                    </div>
+                    <div class="card-col col-right">
+                        <div class="product-text">Opgehaald: <?= TIME_FULL ?></div>
+                    </div>
+                </div>
                 <div class="card-table table-week">
                     <div class="table-row table-head">
                         <div class="table-col first-col">Dag:</div>
-                        <div class="table-col">Bespaard (kWh):</div>
+                        <div class="table-col">Opgewekt (kWh):</div>
                         <div class="table-col">Bespaard (€):</div>
                     </div>
                     <div class="table-row row-hover striped" id="mon">
@@ -92,14 +109,15 @@
                         <div class="table-col"><?= DashboardPage::getWeekKilowatt(DashboardPage::selectWeekDate(6)) ?></div>
                         <div class="table-col"><?= DashboardPage::calcWeekEuro() ?></div>
                     </div>
-                    <hr class="divide">
+                    <hr class="divide-hr">
                     <div class="table-row table-head">
                         <div class="table-col first-col">Totaal:</div>
                         <div class="table-col"><?= DashboardPage::calcWeekKilowattTotal() ?></div>
                         <div class="table-col"><?= DashboardPage::calcWeekEuroTotal() ?></div>
                     </div>
                     <div class="table-row table-legend">
-                        <div class="table-col">"-" = geen data beschikbaar</div>
+                        <div class="table-col">1 kWh is <?= COST ?> euro</div>
+                        <div class="table-col col-right">"-" = geen data beschikbaar</div>
                     </div>
                 </div>
             </div>

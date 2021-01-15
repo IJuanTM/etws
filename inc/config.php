@@ -16,6 +16,7 @@ define('SITEKEY', '');
 
 // Set the current date and time constants
 define('DATE', date('Y-m-d'));
+define('TIME_FULL', date('H:i:s'));
 define('TIME', date('H:i'));
 
 // Set needed folders for page loading

@@ -1,7 +1,7 @@
 .logout {
-  height: calc(100vh - 2vmin);
+  min-height: 98vh;
 }
 
 .logout > .alert {
-  font-size: 3vmin;
+  font-size: 1rem;
 }

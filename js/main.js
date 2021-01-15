@@ -1,24 +1,42 @@
 // Define url
 const baseUrl = window.location.origin + '/';
-const urlArr = window.location.pathname.split('/');
 
 // Check if IE
-if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
-  $("body").load("../../view/parts/errors/unsupported.phtml");
-}
+if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) $("body").load("../../view/parts/errors/unsupported.phtml");
+
+// ------------------------------------------------------------------------------------------------
 
 // Show and hide password
 $(document).on('click', '.toggle-password', function () {
   $(this).toggleClass("fa-eye fa-eye-slash");
-  const passwordInput = $(":text, :password")
+  const passwordInput = $(":text, :password");
   passwordInput.attr('type') === 'password' ? passwordInput.attr('type', 'text') : passwordInput.attr('type', 'password');
 });
 
-// On page load
-$(document).ready(function () {
+// ------------------------------------------------------------------------------------------------
 
-  // Get day and translate to mon, tue, wed...
-  let day_id
+// Ajax code for current time
+function time() {
+  let hours = new Date().getHours();
+  if (hours < 10) hours = "0" + hours;
+
+  let minutes = new Date().getMinutes();
+  if (minutes < 10) minutes = "0" + minutes;
+
+  let seconds = new Date().getSeconds();
+  if (seconds < 10) seconds = "0" + seconds;
+
+  $.ajax({
+    success: function () {
+      const time = hours + ":" + minutes + ":" + seconds;
+      console.log("Synced: " + time);
+    }
+  });
+}
+
+// Ajax code every minute to check if day is changed
+function day() {
+  let day_id;
   switch (new Date().getDay()) {
     case 0:
       day_id = "sun";
@@ -40,45 +58,72 @@ $(document).ready(function () {
       break;
     case 6:
       day_id = "sat";
+      break;
   }
 
-  // Ajax code every minute to check if day is changed
-  function day() {
-    $.ajax({
-      success: function (data) {
-        $(day_id).html(data);
-        window.setTimeout(day, 60000);
-      }
-    });
-  }
+  $.ajax({
+    success: function () {
+      const current = document.getElementById(day_id);
+      if (current) current.className += " current";
+    }
+  });
+}
 
-  // Run ajax code only on dashboard page
-  if (location.href === baseUrl + '/dashboard') day();
+// Ajax code to automatically update display every 10 seconds
+function display() {
+  let text = ".reload-text";
+  $.ajax({
+    success: function () {
+      spin();
+      setTimeout(function () {
+        $("#display").load(" #display > *");
+        day();
+        time();
+      }, 2000);
+      $(text).css("width", "100%");
+      $(text).css("margin-right", "1vmin");
+      $(text).css("opacity", "100%");
+      setTimeout(function () {
+        $(text).css("width", "0");
+        $(text).css("margin-right", "0");
+        $(text).css("opacity", "50%");
+      }, 1000);
+    }
+  });
+}
 
-  // Add current class to the right day
-  const current = document.getElementById(day_id);
-  if (current) current.className += " current";
+// Auto sync every 60 seconds
+function sync() {
+  $.ajax({
+    success: function () {
+      display();
+      setTimeout(sync, 60000);
+    }
+  });
+}
 
-  // // Ajax code to automatically update kwh
-  // function kwh() {
-  //   $.ajax({
-  //     url: baseUrl + 'view/parts/ajax/display.php',
-  //     success: function (data) {
-  //       $("#display").html(data);
-  //       console.log(data);
-  //       window.setTimeout(kwh, 1000);
-  //     }
-  //   });
-  // }
-  //
-  // console.log(kwh());
-  //
-  // // Run ajax code only on dashboard page
-  // if (location.href === baseUrl + '/dashboard') kwh();
-});
+// Spin icon
+function spin() {
+  $.ajax({
+    success: function () {
+      $(".reload").addClass(" spin");
+    }
+  });
+}
+
+// Manual reload page
+$(document).on('click', '#reload', display);
+
+// Run ajax code only on dashboard page
+if (location.href === baseUrl + 'dashboard/') {
+  day();
+  setTimeout(sync, 58000);
+}
+
+// ------------------------------------------------------------------------------------------------
 
 // Load icon
-document.onreadystatechange = function () {
+$(document).on('readystatechange', function () {
   $("body").css("overflow", "hidden");
   const state = document.readyState;
   if (state === "interactive") {
@@ -91,4 +136,4 @@ document.onreadystatechange = function () {
       document.getElementById("content").style.visibility = "visible";
     }, 100);
   }
-};
+});

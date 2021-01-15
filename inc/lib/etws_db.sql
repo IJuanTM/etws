@@ -75,15 +75,42 @@ CREATE TABLE IF NOT EXISTS etws_data
   DEFAULT CHARSET = utf8;
 
 INSERT INTO etws_data (product, kilowatt, date)
-VALUES (1, 0.23, curdate() - 6),
-       (1, 0.04, curdate() - 5),
-       (1, 0.12, curdate() - 5),
-       (1, 0.07, curdate() - 4),
-       (1, 0.12, curdate() - 2),
-       (1, 0.34, curdate() - 2),
-       (1, 0.22, curdate() - 1),
-       (1, 0.05, curdate() - 1),
-       (1, 0.12, curdate());
+VALUES (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL 2 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL 1 DAY),
+       (1, rand() * (0.00 - 2.00) + 2.00, curdate()),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL rand() * (0 - 50) + 50 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL 3 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate() - INTERVAL 1 DAY),
+       (2, rand() * (0.00 - 2.00) + 2.00, curdate());
 
 -- --------------------------------------------------------
 
@@ -122,8 +149,8 @@ CREATE TABLE IF NOT EXISTS user
   DEFAULT CHARSET = utf8;
 
 INSERT INTO user (product, email, password, join_date, activated, firstname, lastname, birthdate, phone, country, province, city, zipcode, street, streetnumber)
-VALUES (1, 'user@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-11-21', 1, 'Henk', 'Kaas', '1982-04-06', 0612345678, 'Nederland', 'Utrecht', 'Utrecht', '3522AB', 'Straatweg', 33),
-       (2, 'user2@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-12-12', 1, 'John', 'Cheese', '1999-08-15', 0687654321, 'Nederland', 'Zuid-Holland', 'Den Haag', '1022AB', 'Wegstraat', 45);
+VALUES (1, 'henk@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2020-11-21', 1, 'Henk', 'De Vries', '1982-04-06', 0612345678, 'Nederland', 'Utrecht', 'Utrecht', '3522AB', 'Nieuwestraat', 133),
+       (2, 'sara@mail.nl', '$2y$10$U4zPov6wzvpQrN.5fdXL2.MwTWBmkNBK4svt496t5zzplhftj.V5a', '2021-01-12', 1, 'Sara', 'De Groot', '1995-08-15', 0687654321, 'Nederland', 'Zuid-Holland', 'Den Haag', '1022AB', 'Groteweg', 45);
 
 COMMIT;
 

@@ -5,9 +5,10 @@
 <![endif]-->
 
 <html lang="en">
+
 <head>
     <!--Define url-->
-    <script>window.app = {baseUrl: <?php print json_encode($this->urlArr['baseUrl']); ?> };</script>
+    <script>window.app = {baseUrl: <?= json_encode($this->urlArr['baseUrl']); ?>};</script>
 
     <!--Page Title-->
     <title><?= PAGENAME ?></title>
@@ -26,6 +27,7 @@
     require_once CSS;
     ?>
 </head>
+
 <body>
 <!-- Loading icon -->
 <div id="load">
@@ -34,7 +36,7 @@
 
 <!--Navbar-->
 <?php
-if (!empty($this->urlArr['pagename'])){
+if (!empty($this->urlArr['pagename'])) {
     if ($this->urlArr['pagename'] != 'login') {
         if (isset($_SESSION["user_role"])) {
             $this->get_part('navbar');
@@ -44,6 +46,10 @@ if (!empty($this->urlArr['pagename'])){
                 header("Refresh: 2; url=" . PageController::url('login') . "");
             }
         }
+    }
+} else {
+    if (isset($_SESSION["user_role"])) {
+        header("Refresh: 0; url=" . PageController::url(REDIRECT) . "");
     }
 }
 ?>

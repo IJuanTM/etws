@@ -2,7 +2,72 @@
     <div class="page-row">
         <div class="page-col">
             <div class="page-card">
-                test
+                <div class="page-row">
+                    <div class="page-col col-left">
+                        <div class="card-table account-table">
+                            <div class="table-row">
+                                <div class="table-col first-col">Voornaam:</div>
+                                <div class="table-col"><?= $_SESSION['firstname'] ?></div>
+                            </div>
+                            <?php if (!empty($_SESSION['insertion'])) : ?>
+                                <div class="table-row">
+                                    <div class="table-col first-col">Tussenvoegsel:</div>
+                                    <div class="table-col"><?= $_SESSION['insertion'] ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <div class="table-row">
+                                <div class="table-col first-col">Achternaam:</div>
+                                <div class="table-col"><?= $_SESSION['lastname'] ?></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col first-col">Geboortedatum:</div>
+                                <div class="table-col"><?= $_SESSION['birthdate'] ?></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col first-col">Telefoon:</div>
+                                <div class="table-col"><?= $_SESSION['phone'] ?></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col first-col">Adres:</div>
+                                <div class="table-col">
+                                    <?= $_SESSION['street'] ?>
+                                    <?= $_SESSION['number'] ?>,
+                                    <br>
+                                    <?= $_SESSION['zipcode'] ?>,
+                                    <?= $_SESSION['city'] ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="divide-vr">
+                    <div class="page-col col-right">
+                        <div class="card-row">
+                            <div class="card-col">
+                                <div class="page-card account-card striped">
+                                    <h1 class="card-head">Totaal:</h1>
+                                    <div class="card-table table-total">
+                                        <div class="table-row">
+                                            <div class="table-col col-large center"><?= DashboardPage::calcKilowattTotal() . " kWh" ?></div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-col col-small center"><?= "&plusmn; € " . number_format(DashboardPage::calcKilowattTotal() * COST, 2) ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-col">
+                                <div class="card-table account-table">
+                                    <div class="table-row">
+                                        <div class="table-col first-col">Aanschaf ETWS:</div>
+                                        <div class="table-col"><?= $_SESSION['date'] ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
